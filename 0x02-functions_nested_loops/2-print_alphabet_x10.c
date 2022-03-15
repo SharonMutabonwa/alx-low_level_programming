@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
-*print_alphabet - prints the alphabets in lowercase
-*followed by a new line.
-*Return: Always 0.
+* print_alphabet - check the code for ALX School students. 
+* Description: prints the alphabets with _putchar
+* Return: Always 0.
 */
 
 void print_alphabet_x10(void)
