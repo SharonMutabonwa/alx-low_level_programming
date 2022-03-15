@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-* print_alphabet - check the code for ALX School students. 
+*print_alphabet_x10 - check the code for ALX School students. 
 * Description: Prints the alphabets with _putchar
 * Return: Always 0.
 */
