@@ -1,6 +1,6 @@
 #include "main.h"
 /**
-*print_alphabet.
+*print_alphabet - check the code ALX School students.
 *Description: Prints the alphabet with _putchar
 *Return: Always 0.
 */
