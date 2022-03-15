@@ -2,6 +2,7 @@
 
 /**
 *_abs - computes the absolute value of an intenger.
+*@n: int to be checked
 *Return: 0 Always
 */
 
