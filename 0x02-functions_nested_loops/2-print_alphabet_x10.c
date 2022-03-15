@@ -2,7 +2,7 @@
 
 /**
 * print_alphabet - check the code for ALX School students. 
-* Description: prints the alphabets with _putchar
+* Description: Prints the alphabets with _putchar
 * Return: Always 0.
 */
 
