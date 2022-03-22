@@ -1,28 +1,24 @@
 #include "main.h"
 
 /**
- * leet - encodes a string in 1337
- * @s: string to be encoded
- *
- * Return: the resulting string;
+ * puts_half - main function.
+ * @str: Pointer, the string of numbers to print.
+ * Description: This function prints half of a string.
+ * Return: none.
  */
-char *leet(char *s)
+
+void puts_half(char *str)
 {
-	int i, j;
+	int i;
 
-	char *a = "aAeEoOtTlL";
-	char *b = "4433007711";
+	for (i = 0; str[i] != '\0'; i++)
+		;
 
-	for (i = 0; s[i] != '\0'; i++)
+		i++;
+	for (i /= 2; str[i] != '\0'; i++)
 	{
-		for (j = 0; j < 10; j++)
-		{
-			if (s[i] == a[j])
-			{
-				s[i] = b[j];
-			}
-		}
+		_putchar(str[i]);
 	}
 
-	return (s);
+	_putchar('\n');
 }
