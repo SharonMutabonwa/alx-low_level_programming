@@ -1,29 +1,27 @@
+#include <stdio.h>
 #include "main.h"
 
 /**
- * rot13 - encodes a string in rot13
- * @s: string to be encoded
+ * print_array - prints n elements of an array of integer
+ * @a: int type array pointer
+ * @n: int type integer
  *
- * Return: the resulting string
+ * Return: void
  */
-char *rot13(char *s)
+void print_array(int *a, int n)
 {
-	int i, j;
+	int i;
 
-	char a[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char b[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
-
-	for (i = 0; s[i] != '\0'; i++)
+	i = 0;
+	for (n--; n >= 0; n--, i++)
 	{
-		for (j = 0; a[j] != '\0'; j++)
+		printf("%d", a[i]);
+		if (n > 0)
 		{
-			if (s[i] == a[j])
-			{
-				s[i] = b[j];
-				break;
-			}
+			printf(", ");
 		}
 	}
 
-	return (s);
+	printf("\n");
+
 }
