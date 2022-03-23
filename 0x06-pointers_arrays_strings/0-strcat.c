@@ -2,8 +2,8 @@
 
 /**
 * _strcat - appends the src string to the dest string
-* @src: string to be concatenated to dest
-* @dest: string for concatenation
+* @src: string to add
+* @dest: string to append to
 * Return: a pointer to the resulting string dest
 */
 char *_strcat(char *dest, char *src)
