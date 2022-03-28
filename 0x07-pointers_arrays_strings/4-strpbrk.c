@@ -7,6 +7,7 @@
 *
 * Return: the number of bytes in the initial segment
 * of s which consist only of bytes from accept
+* or NULL if no such byte is found
 */
 char *_strpbrk(char *s, char *accept)
 {
