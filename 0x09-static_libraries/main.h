@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef _MAIN_H_
+#define _MAIN_H_
 
 int _putchar(char c);
 int _isupper(int c);
@@ -21,6 +21,6 @@ char *_strpbrk(char *s, char *accept);
 char *_strstr(char *haystack, char *needle);
 int _abs(int n);
 char *_strcpy(char *dest, char *src);
-int main(void);
+
 
 #endif
