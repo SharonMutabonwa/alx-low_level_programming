@@ -7,6 +7,7 @@
 * Return: NULL if ac == 0 or av == NULL,
 * a pointer to a new string, or NULL if it fails
 */
+
 char *argstostr(int ac, char **av)
 {
 	int i, j, k, len;
@@ -26,6 +27,7 @@ char *argstostr(int ac, char **av)
 
 	if (str == NULL)
 		return (NULL);
+
 	k = 0;
 
 	for (i = 0; i < ac; i++)
@@ -38,6 +40,6 @@ char *argstostr(int ac, char **av)
 		str[k] = '\n';
 		k++;
 	}
+
 	return (str);
 }
-
