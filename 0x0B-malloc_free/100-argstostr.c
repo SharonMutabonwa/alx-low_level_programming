@@ -23,7 +23,7 @@ char *argstostr(int ac, char **av)
 	}
 	size++;
 /**
- * @here - allocate memory for total number of chars and
+ * Here - We allocate memory for total number of chars and
  * new line for each word
  */
 	strDup = malloc(sizeof(char) * size);
