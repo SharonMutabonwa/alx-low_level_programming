@@ -1,7 +1,7 @@
 #ifndef _SUM_H
 #define _SUM_H
 
-#define SUM(x, y) (((x) < (y)) ? ((y) : (x)))
+#define SUM(x, y) ((x) + (y))
 
 #endif
 
