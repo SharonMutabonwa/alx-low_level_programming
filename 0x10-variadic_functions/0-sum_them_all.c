@@ -4,6 +4,7 @@
 
 /**
 * sum_them_all - returns the sum of all its parameters.
+* @n: number of arguments passed to the function
 * Return: 0 If n == 0
 */
 int sum_them_all(const unsigned int n, ...)
@@ -14,7 +15,7 @@ int sum_them_all(const unsigned int n, ...)
 
 	va_start(sum, n);
 
-	for (i = n; i >= 0; i = va_arg (sum, int))
+	for (i = n; i >= 0; i = va_arg(sum, int))
 	{
 		printf("%d\n", i);
 	}
