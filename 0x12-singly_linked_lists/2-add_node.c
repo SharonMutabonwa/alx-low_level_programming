@@ -1,9 +1,9 @@
 #include "lists.h"
 
 /**
-* *add_node - adds anew node at the beginning of a list_t list
+* add_node - adds anew node at the beginning of a list_t list
 * @head: pointer to the list_t link
-* str: string to duplicate
+* @str: string to duplicate
 * Return address of the new element, or NULL  if it failed
 */
 
