@@ -5,6 +5,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+* struct list_s - single linked list
+* @str: strng - (malloc'ed string)
+* @len: length of the sring
+* @next: points to the next node
+*/
 
 typedef struct list_s
 {
