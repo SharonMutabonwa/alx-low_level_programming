@@ -9,24 +9,21 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t fh, r, w;
-	char *buffer;
+	FILE *fp;
+	ssize_t n;
 
-	fh = open(filename, O_RDONLY);
+	fp = fopen("filename.txt", "r");
 
-	if (!fh || filename == NULL)
+	if (fp == NULL || filename == NULL)
 	{
 		return (0);
 	}
+	fprintf("%li\n", letters);
 
-	buffer = malloc(sizeof(char) * letters);
-	if (buffer == NULL)
+	if (!n)
+	{
 		return (0);
-
-	r = read(fh, buffer, letters);
-	w = write(STDOUT_FILENO, buffer, r);
-
-	free(buffer);
-	close(fh);
-	return (w);
+	}
+	fclose(fp);
+	return (n);
 }
