@@ -9,6 +9,8 @@
 #include <sys/uio.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <elf.h>
+#include <sys/stat.h>
 
 
 int _Putchar(char c);
