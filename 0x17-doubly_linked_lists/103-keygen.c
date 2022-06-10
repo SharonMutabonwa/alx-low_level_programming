@@ -1,47 +1,46 @@
 #include <stdio.h>
-#include <Python.h>
+#include <string.h>
+#include <stdlib.h>
 
-void print_python_bytes(PyObject *p)
+/**
+ * main - generate a key depending on a username for crackme5
+ * @argc: number of arguments passed
+ * @argv: arguments passed to main
+ *
+ * Return: 0 on success, 1 on error
+ */
+
+int main(int argc, char *argv[])
 {
-        char *str;
-        Py_ssize_t length, i;
+	unsigned int i, b;
+	size_t len, add;
+	char *l = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
+	char p[7] = "      ";
 
-        printf("[.] bytes object info\n");
-        if (!PyBytes_Check(p))
-                printf("  [ERROR] Invalid Bytes Object\n");
-        else
-        {
-                PyBytes_AsStringAndSize(p, &str, &length);
-                printf("  size: %lu\n", length);
-                printf("  trying string: %s\n", str);
-                if (length > 10)
-                        length = 10;
-                else
-                        length++;
-                printf("  first %lu bytes: ", length);
-                for (i = 0; i < length - 1; i++)
-                        printf("%02x ", str[i] & 0xff);
-                printf("%02x\n", str[length - 1] & 0xff);
-        }
-}
-
-void print_python_list(PyObject *p)
-{
-        Py_ssize_t i;
-        PyObject *list;
-
-        if (PyList_Check(p))
-        {
-                printf("[*] Python list info\n");
-                printf("[*] Size of the Python List = %lu\n", PyList_Size(p));
-                printf("[*] Allocated = %lu\n", ((PyListObject *)p)->allocated);
-                for (i = 0; i < PyList_Size(p); i++)
-                {
-                        list = PySequence_GetItem(p, i);
-                        printf("Element %lu: %s\n", i,
-                               list->ob_type->tp_name);
-                        if (strcmp(list->ob_type->tp_name, "bytes") == 0)
-                                print_python_bytes(list);
-                }
-        }
+	if (argc != 2)
+	{
+		printf("Correct usage: ./keygen5 username\n");
+		return (1);
+	}
+	len = strlen(argv[1]);
+	p[0] = l[(len ^ 59) & 63];
+	for (i = 0, add = 0; i < len; i++)
+		add += argv[1][i];
+	p[1] = l[(add ^ 79) & 63];
+	for (i = 0, b = 1; i < len; i++)
+		b *= argv[1][i];
+	p[2] = l[(b ^ 85) & 63];
+	for (b = argv[1][0], i = 0; i < len; i++)
+		if ((char)b <= argv[1][i])
+			b = argv[1][i];
+	srand(b ^ 14);
+	p[3] = l[rand() & 63];
+	for (b = 0, i = 0; i < len; i++)
+		b += argv[1][i] * argv[1][i];
+	p[4] = l[(b ^ 239) & 63];
+	for (b = 0, i = 0; (char)i < argv[1][0]; i++)
+		b = rand();
+	p[5] = l[(b ^ 229) & 63];
+	printf("%s\n", p);
+	return (0);
 }
