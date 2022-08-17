@@ -1,6 +1,4 @@
+CC = gcc
+SRC = *.c
 all:
-	CC SRC -o school
-CC:
-	gcc
-SRC:
-	*.c
+	$(CC) $(SRC) -o school

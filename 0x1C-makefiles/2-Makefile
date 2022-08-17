@@ -1,0 +1,12 @@
+all:
+	CC SRC -o NAME
+CC:
+	gcc
+SRC:
+	*.c
+OBJ:
+	*.o
+NAME:
+	school
+CLEAN:
+	OBJ
