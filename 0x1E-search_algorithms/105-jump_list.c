@@ -1,68 +1,59 @@
+#include <math.h>
 #include "search_algos.h"
 
 /**
- * advanced_binary - searches for a value in an array of
- * integers using the Binary search algorithm
- * @array: array to search the value in
- * @size: size of the array
- * @value: value to look for
+ * move_forward - moves a list forward until the index matches a desired
+ * index, or the last node in the list
+ * @list: list to move forward
+ * @index: desired index
  *
- * Return: the index of the found value,
- * or -1 if not found
+ * Return: node with desired index, or last node in the list
  */
-int advanced_binary(int *array, size_t size, int value)
+listint_t *move_forward(listint_t *list, size_t index)
 {
-	if (!array || size == 0)
-		return (-1);
-
-	return (help_binary(array, value, 0, size - 1));
+	while (list->next != NULL && list->index < index)
+		list = list->next;
+	return (list);
 }
 
 /**
- * help_binary - searches for a value in an array of
- * integers using recursion
- * @array: array to search the value in
- * @value: value to look for
- * @lo: index of the low bound
- * @hi: index of the high bound
+ * jump_list - searches for a value in a sorted list of integers using the Jump
+ * search algorithm
+ * @list: pointer to the head of the list to search in
+ * @size: number of nodes in list
+ * @value: value to search for
  *
- * Return: the index of the found value,
- * or -1 if not found
+ * Return: pointer to the first node where value is located, or NULL on failure
  */
-int help_binary(int *array, int value, size_t lo, size_t hi)
+listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-	size_t mid;
+	size_t jump;
+	listint_t *left, *right;
 
-	array_print(array, lo, hi);
-	if (hi == lo && array[lo] != value)
-		return (-1);
-
-	mid = ((hi - lo) / 2) + lo;
-	if (array[mid] == value)
-		return (mid);
-	if (array[mid] < value)
-		return (help_binary(array, value, mid + 1, hi));
-	if (array[mid] > value)
-		return (help_binary(array, value, lo, mid - 1));
-	return (-1);
-}
-
-/**
- * array_print - prints an array
- * @array: array to print
- * @lo: index of the low bound
- * @hi: index of the high bound
- */
-void array_print(int *array, size_t lo, size_t hi)
-{
-	size_t i;
-
-	printf("Searching in array: ");
-	for (i = lo; i <= hi; i++)
+	if (list != NULL && size > 0)
 	{
-		printf("%d", array[i]);
-		if (i < hi)
-			printf(", ");
+		jump = sqrt(size);
+		left = list;
+		right = move_forward(left, jump);
+		printf("Value checked at index [%lu] = [%d]\n", right->index, right->n);
+		while (right->index < (size - 1) && right->n < value)
+		{
+			left = right;
+			right = move_forward(left, right->index + jump);
+			printf("Value checked at index [%lu] = [%d]\n", right->index, right->n);
+		}
+		printf("Value found between indexes [%lu] and [%lu]\n",
+		       left->index, right->index);
+		printf("Value checked at index [%lu] = [%d]\n", left->index, left->n);
+		while (left->index < size - 1 && left->n < value)
+		{
+			left = left->next;
+			if (left == NULL)
+				return (NULL);
+			printf("Value checked at index [%lu] = [%d]\n", left->index, left->n);
+		}
+		if (left->n == value)
+			return (left);
 	}
-	printf("\n");
+	return (NULL);
 }
